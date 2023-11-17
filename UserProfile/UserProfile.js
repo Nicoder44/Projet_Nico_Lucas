@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+// UserProfile.js
+const { useState } = React;
 
 const UserProfile = () => {
-  // Utilisez le state pour stocker les informations du profil
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',
@@ -9,66 +9,71 @@ const UserProfile = () => {
     bio: '',
   });
 
-  // Fonction de gestion des changements de formulaire
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
 
-  // Fonction de gestion de la soumission du formulaire
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Vous pouvez ajouter ici la logique pour envoyer les informations du profil au backend
-    console.log('Informations du profil soumises :', user);
+  const handleSubmit = () => {
+    console.log('Informations du profil:', user);
+    // Ajoutez ici la logique pour envoyer les informations au backend si nécessaire
   };
 
-  return (
-    <div>
-      <h2>Créer un profil utilisateur</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Prénom:
-          <input
-            type="text"
-            name="firstName"
-            value={user.firstName}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Nom de famille:
-          <input
-            type="text"
-            name="lastName"
-            value={user.lastName}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Bio:
-          <textarea
-            name="bio"
-            value={user.bio}
-            onChange={handleInputChange}
-          ></textarea>
-        </label>
-        <br />
-        <button type="submit">Enregistrer le profil</button>
-      </form>
-    </div>
+  // Création des éléments sans JSX
+  const form = React.createElement('form', null,
+    React.createElement('label', null,
+      'Prénom:',
+      React.createElement('input', {
+        type: 'text',
+        name: 'firstName',
+        value: user.firstName,
+        onChange: handleInputChange
+      })
+    ),
+    React.createElement('br', null),
+    React.createElement('label', null,
+      'Nom de famille:',
+      React.createElement('input', {
+        type: 'text',
+        name: 'lastName',
+        value: user.lastName,
+        onChange: handleInputChange
+      })
+    ),
+    React.createElement('br', null),
+    React.createElement('label', null,
+      'Email:',
+      React.createElement('input', {
+        type: 'email',
+        name: 'email',
+        value: user.email,
+        onChange: handleInputChange
+      })
+    ),
+    React.createElement('br', null),
+    React.createElement('label', null,
+      'Bio:',
+      React.createElement('textarea', {
+        name: 'bio',
+        value: user.bio,
+        onChange: handleInputChange
+      })
+    ),
+    React.createElement('br', null),
+    React.createElement('button', {
+      type: 'button',
+      onClick: handleSubmit
+    }, 'Enregistrer le profil')
+  );
+
+  return React.createElement('div', null,
+    React.createElement('h2', null, 'Créer un profil utilisateur'),
+    form
   );
 };
 
-export default UserProfile;
+// Rendre le composant UserProfile dans la racine de l'élément avec l'ID "root"
+ReactDOM.render(
+  React.createElement(UserProfile),
+  document.getElementById('root')
+);
