@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Connectez-vous à MongoDB
-mongoose.connect('mongodb://localhost/nom_de_votre_base_de_donnees', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://Nicoder44:vgiR4JAZCwJl7Pth@cluster0.y7gx82u.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Votre modèle de données (utilisateur)
 const User = mongoose.model('User', {
@@ -36,3 +36,5 @@ app.post('/inscription', async (req, res) => {
 app.listen(port, () => {
   console.log(`Serveur en cours d'exécution sur le port ${port}`);
 });
+
+
