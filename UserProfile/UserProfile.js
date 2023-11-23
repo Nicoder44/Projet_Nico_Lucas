@@ -30,7 +30,7 @@ const UserProfile = () => {
     // Ajoutez ici la logique pour envoyer les informations au backend si nécessaire
   };
 
-  // Création des éléments sans JSX
+  
   const form = React.createElement('form', null,
     React.createElement('label', null,
       'Prénom:',
