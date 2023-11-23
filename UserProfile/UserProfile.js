@@ -1,16 +1,23 @@
 // UserProfile.js
-const { useState } = React;
 
+const { useState } = React;
 const UserProfile = () => {
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',
     email: '',
+    mdp: '',
+    confmdp: '',
+    naissance: '',
     bio: '',
   });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    var { name, value } = e.target;
+    if(name == 'mdp' || name == 'confmdp')
+    {
+      value = CryptoJS.MD5(value).toString();
+    }
     setUser({ ...user, [name]: value });
   };
 
@@ -26,7 +33,6 @@ const UserProfile = () => {
       React.createElement('input', {
         type: 'text',
         name: 'firstName',
-        value: user.firstName,
         onChange: handleInputChange
       })
     ),
@@ -36,7 +42,6 @@ const UserProfile = () => {
       React.createElement('input', {
         type: 'text',
         name: 'lastName',
-        value: user.lastName,
         onChange: handleInputChange
       })
     ),
@@ -46,16 +51,40 @@ const UserProfile = () => {
       React.createElement('input', {
         type: 'email',
         name: 'email',
-        value: user.email,
         onChange: handleInputChange
       })
+    ),
+    React.createElement('br', null),
+    React.createElement('label', null,
+      'Nouveau mdp:',
+      React.createElement('input', {
+        type: 'password',
+        name: 'mdp',
+        onChange: handleInputChange
+    })
+    ),React.createElement('label', null,
+    'Confirmer mdp:',
+      React.createElement('input', {
+        type: 'password',
+        name: 'confmdp',
+        onChange: handleInputChange
+    })
+    ),
+    React.createElement('br', null),
+    React.createElement('label', null,
+    'Date de naissance:',
+      React.createElement('input', {
+        type: 'date',
+        name: 'naissance',
+        onChange: handleInputChange
+    })
     ),
     React.createElement('br', null),
     React.createElement('label', null,
       'Bio:',
       React.createElement('textarea', {
         name: 'bio',
-        value: user.bio,
+        type: "password",
         onChange: handleInputChange
       })
     ),
