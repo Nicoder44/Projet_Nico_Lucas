@@ -22,7 +22,11 @@ const UserProfile = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Informations du profil:', user);
+    if (user.mdp == user.confmdp){
+      console.log('Informations du profil:', user);
+    }else{
+      console.log('Votre confirmation de mot de passe est différent de votre mot de passe');
+    }
     // Ajoutez ici la logique pour envoyer les informations au backend si nécessaire
   };
 
@@ -63,7 +67,7 @@ const UserProfile = () => {
         onChange: handleInputChange
     })
     ),React.createElement('label', null,
-    'Confirmer mdp:',
+    'Confirmez mdp:',
       React.createElement('input', {
         type: 'password',
         name: 'confmdp',
