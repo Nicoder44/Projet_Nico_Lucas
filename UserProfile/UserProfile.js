@@ -89,6 +89,8 @@ const UserProfile = () => {
       React.createElement('textarea', {
         name: 'bio',
         type: "password",
+        rows: "10",
+        cols: "50",
         onChange: handleInputChange
       })
     ),
